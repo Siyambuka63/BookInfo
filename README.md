@@ -1,4 +1,4 @@
-# PeopleInfo
+# BookInfo
 ## Description
 
 A website that does CRUD operations to a database, used to demonstate how to use Node.js to communicate a with a MySQL database.
