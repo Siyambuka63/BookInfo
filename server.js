@@ -1,12 +1,19 @@
+//requiring the express library
 const sqlite3 = require('sqlite3').verbose();
+
+//requiring the express library
 const express = require('express');
+
+//requiring the cors library
 const cors = require('cors');
 
+//sets up server
 const app = express();
-const db = new sqlite3.Database('./book.sqlite');
+app.use(express.json()); // Allow JSON requests
+app.use(cors()); // Allow cross-origin requests (server and client can be on different ports)
 
-app.use(express.json());
-app.use(cors()); // Allow frontend to access backend
+// Database connection
+const db = new sqlite3.Database('./book.sqlite');
 
 // Create Table if not exists
 db.run("CREATE TABLE IF NOT EXISTS Book (title TEXT, author TEXT, price REAL)");
@@ -36,7 +43,7 @@ app.post('/deleteBook', (req, res) => {
     const { title } = req.body;
     db.run(sql, [title], function (err) {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Book deleted successfully!", changes: this.changes });
+        res.json({ message: "Book deleted successfully!" });
     });
 });
 
