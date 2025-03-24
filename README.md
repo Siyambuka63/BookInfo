@@ -21,7 +21,13 @@ A website that does CRUD operations to a database, used to demonstate how to use
 3. Navigate to the project directory:
    > cd project-name
 
-4. Run the server
+4. Generate package.json file to track dependencies
+   > npm init -y
+
+5. Install required dependencies
+   > npm install express cors sqlite3
+   
+6. Run the server
    > node server.js
 
-5. Run index.html
+7. Run index.html
